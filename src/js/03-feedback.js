@@ -1,4 +1,4 @@
-const _ = require('lodash');
+let _ = require('lodash');
 let currentFormData = {};
 const form = document.querySelector(".feedback-form");
 
@@ -9,12 +9,11 @@ function handleSubmit(event) {
     const {elements: { email, message }} = event.currentTarget;
 
     if (email.value === "" || message.value === "") {
-        return console.log("Please fill in all the fields!");
+        return alert("Please fill in all the fields!");
       }
         console.log('Email: ' + email.value + '   Message: ' + message.value);
         localStorage.clear();
-        email.value = '';
-        message.value = '';
+        event.currentTarget.reset();
       };
 
 form.addEventListener("input", _.throttle((event) => {
